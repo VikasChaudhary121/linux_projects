@@ -1,0 +1,20 @@
+#RAM monitaring project (shell scripting )
+#this code keep on checking the free RAM after the interavl of 10 seconds
+# and pop up an alert!! massage... when the free RAM is less than 500 MB
+
+#!/bin/bash
+
+free_memory=$(free -mt | grep Total | awk '{print $4}')
+while true
+do
+        if [ $free_memory -le 500 ]
+        then
+                echo "=====MEMORY ALERT======"
+        else
+                echo " sufficient memory is there - $free_memory M "
+
+        fi
+
+sleep 10s
+
+done
